@@ -1,0 +1,1 @@
+dulu proyek ini ku dedikasikan untuk website osis, tapi ya.. butuh persetujuan.. udah ku coba mengajukan ke ketua osis bahkan GURU guru di jurusan rpl, dan yap, guru setuju tapi ketos belum ada respon, sampai SEKARANG malah.. yauda ku jadiin gini aja..
