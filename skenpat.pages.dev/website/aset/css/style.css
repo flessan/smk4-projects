@@ -1,13 +1,14 @@
 /* 
-   SKENPAT MAIN STYLES
+   SKENPAT MAIN STYLES - Material You Enhanced
    Structure:
-   1. core.css       - Variables, Reset, Global
-   2. navbar.css     - Navigation
-   3. header.css     - Hero / Header Section
-   4. dashboard.css  - Portal Cards, Links Grid
-   5. music-player.css - Music Player Component
-   6. components.css - Modals, Icons, Footer, Timeline, FAB
-   7. responsive.css - Media Queries
+   1. core.css          - M3 Tokens, Reset, Global, Dark
+   2. navbar.css        - M3 Top App Bar
+   3. header.css        - Hero / Header
+   4. dashboard.css     - Portal Cards, Links Grid
+   5. music-player.css  - Music Player Component
+   6. components.css    - Modals, Icons, Footer, Timeline, FAB
+   7. responsive.css    - Media Queries
+   8. material-you.css  - Landing + Native App shell (Google-style + M3 Nav)
 */
 
 @import "core.css";
@@ -17,3 +18,4 @@
 @import "music-player.css";
 @import "components.css";
 @import "responsive.css";
+@import "material-you.css";

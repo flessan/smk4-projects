@@ -1,177 +1,127 @@
-/* skenpat-redesign: Responsive Breakpoints */
+/* skenpat-redesign: Responsive - Super Responsive 320px -> 1440px, Consistent */
 
-/* Small Tablets & Mobile Landscape */
+/* Base: Mobile First is already in core + material-you. This file adds progressive enhancement */
+
+/* 320px - iPhone SE, small Android */
+@media (max-width: 359px) {
+    :root { --container-width: 96%; --section-padding: 12px; }
+    .navbar-container, .app-container-m3, .g-footer-row { width: 96%; }
+    .header { padding: 72px 10px 24px; }
+    .hero-title { font-size: 1.8rem !important; }
+    .portal-grid { grid-template-columns: 1fr !important; gap:8px; }
+    .m3-top-app-bar { padding-inline: 8px 6px; gap:6px; }
+    .m3-app-logo { width:32px; height:32px; }
+    .m3-title { font-size:0.95rem; }
+    .m3-title div:last-child { display:none; }
+    .m3-search-section { padding: 8px; top: calc(54px + var(--safe-top)); }
+    .m3-search-bar { padding: 3px 4px 3px 12px; }
+    .m3-search-bar input { font-size:13px; padding:6px 0; }
+    .m3-icon-btn { width:36px; height:36px; }
+}
+
+/* 360-479 - common phones */
+@media (min-width: 360px) and (max-width: 479px) {
+    .g-seo-section { margin: 0 10px 14px; }
+    .app-container-m3 { width: 94%; }
+    .m3-hero-card { padding: 16px; flex-direction: column; align-items:flex-start; }
+    .portal-grid.m3-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; }
+}
+
+/* 480-639 - large phones / phablets */
+@media (min-width: 480px) and (max-width: 639px) {
+    .portal-grid { grid-template-columns: repeat(2, 1fr); }
+    .g-feature-grid { grid-template-columns: repeat(2, 1fr); }
+    .m3-link-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* 640-767 - tablets portrait */
+@media (min-width: 640px) and (max-width: 767px) {
+    .g-header { padding: 0 12px; }
+    .g-hero { padding: 28px 16px 20px; }
+    .app-container-m3 { width: 92%; }
+    .portal-grid.m3-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+
+/* 768-1023 - tablets landscape */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .g-hero { min-height: 60vh; }
+    .g-search-wrap { width: 584px; }
+    .g-seo { width: min(90%, 720px); }
+    .app-container-m3 { width: min(90%, 800px); }
+    .m3-search-section { padding: 12px 18px; }
+}
+
+/* 1024-1279 - small desktop */
+@media (min-width: 1024px) and (max-width: 1279px) {
+    .g-seo { width: 720px; }
+    .app-container-m3 { width: 960px; }
+}
+
+/* 1280+ - large desktop */
+@media (min-width: 1280px) {
+    .g-seo { width: 720px; }
+    .app-container-m3 { width: 1120px; }
+}
+
+/* Touch devices - bigger tap targets, no hover transforms that break */
+@media (pointer: coarse) {
+    .portal-card:hover, .m3-card:hover, .g-feature:hover, .m3-portal-card:hover {
+        transform: none !important;
+    }
+    .portal-card:active, .m3-card:active, .g-feature:active, .m3-portal-card:active {
+        transform: scale(0.98) !important;
+    }
+    /* Ensure 44px min tap */
+    .g-header-link { min-height: 40px; display:inline-flex; align-items:center; }
+}
+
+/* Landscape phones - save vertical space */
+@media (max-height: 480px) and (orientation: landscape) {
+    .g-header { height: 50px; }
+    .g-hero { min-height: auto; padding: 10px 12px; }
+    .g-logo-wrap { flex-direction: row; gap:12px; margin-bottom:8px; }
+    .g-logo-img { width:40px; height:40px; }
+    .g-logo-text { font-size:1.5rem; }
+    .g-tagline { display:none; }
+    .g-search-wrap { margin-top:8px; }
+    .g-actions { margin-top:8px; }
+    .g-install-card, .g-footer { display:none; }
+    .m3-top-app-bar { height: calc(48px + var(--safe-top)); }
+    .m3-search-section { top: calc(48px + var(--safe-top)); padding:6px 10px; }
+    .app-container-m3 { padding-bottom: calc(72px + var(--safe-bottom)); }
+    .m3-nav-bar { padding: 2px 0 calc(2px + var(--safe-bottom)); }
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .g-hero::before, .bouncy-loader { animation: none !important; }
+}
+
+/* Print - hide nav */
+@media print {
+    .g-header, .m3-top-app-bar, .m3-nav-bar, .m3-rail, .m3-fab, .fab, .back-to-top, .g-install-card, .m3-player-bar { display:none !important; }
+    body { background: white !important; color: black !important; }
+}
+
+/* Old navbar menu responsive - enhanced for mobile drawer consistency */
 @media (max-width: 992px) {
     .navbar-menu {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: min(100%, 400px);
-        height: 100vh;
-        background: var(--surface);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 40px;
-        transition: var(--ease-out-expo) 0.8s;
-        border-right: var(--border-thin) solid var(--border-color);
-        z-index: 999;
+        position: fixed; top:0; left:-100%; width: min(86%, 340px); height: 100dvh;
+        background: var(--surface); flex-direction: column; justify-content: flex-start;
+        padding: 80px 18px 24px; transition: 340ms var(--ease-out-expo);
+        border-right: 1px solid var(--md-outline-variant); z-index: 999;
+        box-shadow: var(--shadow-4); gap:6px; overflow-y:auto;
     }
-
-    .navbar-menu.active {
-        left: 0;
-    }
-
-    .navbar-toggle {
-        display: block;
-    }
-
-    .navbar {
-        height: 70px;
-    }
-
-    .navbar.scrolled {
-        height: 60px;
-    }
-
-    .header {
-        padding: 100px 0 40px;
-    }
-
-    .header h1 {
-        font-size: clamp(2.5rem, 8vw, 3.5rem);
-    }
-
-    .team-avatar-wrapper {
-        width: 70px;
-        height: auto;
-        object-fit: cover;
-    }
-
-    /* Adjust toast position on mobile */
-    .toast-container {
-        right: 10px;
-        left: 10px;
-    }
-
-    .toast {
-        max-width: 100%;
-    }
-
-    /* Adjust floating buttons on mobile */
-    .floating-suggest {
-        bottom: 80px;
-        right: 10px;
-        font-size: 0.85rem;
-        padding: 10px 15px;
-    }
-
-    .fab {
-        width: 50px;
-        height: 50px;
-        bottom: 20px;
-        right: 20px;
-    }
-
-    .back-to-top {
-        width: 50px;
-        height: 50px;
-        bottom: 20px;
-        left: 20px;
-    }
+    [data-theme="dark"] .navbar-menu { background: var(--md-surface-container); }
+    .navbar-menu.active { left:0; }
+    .navbar-toggle { display: flex; }
+    .navbar { height: 60px; }
+    .navbar.scrolled { height: 54px; }
+    .header { padding: 80px 14px 32px; }
+    .portal-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:12px; }
+    .fab { width:50px; height:50px; bottom: calc(88px + var(--safe-bottom)); right:14px; }
+    .back-to-top { width:44px; height:44px; bottom: calc(88px + var(--safe-bottom)); left:14px; }
 }
 
-/* Tablets & Large Phones */
-@media (max-width: 768px) {
-    .portal-grid {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
-
-    .links-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    }
-
-    .music-player-section {
-        padding: 1.5rem;
-    }
-
-    .soundcloud-player {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "artwork"
-            "info"
-            "controls"
-            "progress"
-            "extra";
-        text-align: center;
-    }
-
-    .player-artwork-info {
-        width: 140px;
-        height: 140px;
-        margin: 0 auto;
-    }
-
-    .player-info {
-        text-align: center;
-    }
-
-    .player-controls {
-        justify-content: center;
-    }
-
-    .section {
-        border-radius: var(--radius-md);
-    }
-
-    .footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .team-avatar-wrapper {
-        width: 50px;
-        height: auto;
-        object-fit: cover;
-    }
-}
-
-/* Small Mobile Devices */
-@media (max-width: 480px) {
-    .header h1 {
-        font-size: 2.2rem;
-    }
-
-    .header p {
-        font-size: 1rem;
-    }
-
-    .cta-pill {
-        width: 100%;
-        justify-content: center;
-        padding: 14px 20px;
-    }
-
-    .portal-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .links-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .navbar-logo span {
-        font-size: 1rem;
-    }
-
-    .navbar-logo img {
-        width: 32px;
-        height: 32px;
-    }
-
-    .volume-container {
-        display: none;
-        /* Hide volume on small mobile to save space */
-    }
-}
+/* Ensure consistent border radius across devices - no sudden change */
+* { scrollbar-width: thin; }
