@@ -25,6 +25,7 @@
     --surface: #FFFFFF;
     --glass: rgba(255, 255, 255, 0.7);
     --glass-dark: rgba(25, 20, 20, 0.8);
+    --bg-card: #FFFFFF;
 
     /* Text */
     --text-main: #2D1B1B;
@@ -66,11 +67,14 @@
     --bg-color: #1A1817;
     --surface: #24211F;
     --glass: rgba(36, 33, 31, 0.8);
+    --glass-dark: rgba(25, 20, 20, 0.8);
+    --bg-card: #24211F;
     --text-main: #F5F0EE;
     --text-muted: #BBB1AD;
     --border-color: var(--primary);
     --shadow-flat: 4px 4px 0px #000;
     --shadow-flat-lg: 8px 8px 0px #000;
+    --shadow-blur: 0 10px 30px rgba(0, 0, 0, 0.3);
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 

@@ -1,21 +1,81 @@
 {
   "name": "Skenpat People SMKN 4 Banjarmasin",
-  "short_name": "Skenpat-People",
-  "description": "Web layanan gratis untuk warga SMKN 4 Banjarmasin",
+  "short_name": "Skenpat",
+  "description": "Portal digital terpadu untuk warga SMKN 4 Banjarmasin - Akses jadwal, informasi, dan layanan sekolah",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#F46900",
+  "orientation": "portrait-primary",
+  "background_color": "#FFFBF5",
+  "theme_color": "#FF9F43",
+  "lang": "id-ID",
+  "categories": ["education", "utilities"],
   "icons": [
     {
       "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "shortcuts": [
+    {
+      "name": "Jadwal Mapel",
+      "short_name": "Jadwal",
+      "description": "Akses jadwal mata pelajaran",
+      "url": "/mapel",
+      "icons": [{ "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Feedback",
+      "short_name": "Feedback",
+      "description": "Kirim kritik dan saran",
+      "url": "/feedback",
+      "icons": [{ "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png", "sizes": "96x96" }]
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
 }

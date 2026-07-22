@@ -15,7 +15,7 @@
         padding: 40px;
         transition: var(--ease-out-expo) 0.8s;
         border-right: var(--border-thin) solid var(--border-color);
-        z-index: 998;
+        z-index: 999;
     }
 
     .navbar-menu.active {
@@ -24,6 +24,14 @@
 
     .navbar-toggle {
         display: block;
+    }
+
+    .navbar {
+        height: 70px;
+    }
+
+    .navbar.scrolled {
+        height: 60px;
     }
 
     .header {
@@ -38,6 +46,38 @@
         width: 70px;
         height: auto;
         object-fit: cover;
+    }
+
+    /* Adjust toast position on mobile */
+    .toast-container {
+        right: 10px;
+        left: 10px;
+    }
+
+    .toast {
+        max-width: 100%;
+    }
+
+    /* Adjust floating buttons on mobile */
+    .floating-suggest {
+        bottom: 80px;
+        right: 10px;
+        font-size: 0.85rem;
+        padding: 10px 15px;
+    }
+
+    .fab {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .back-to-top {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        left: 20px;
     }
 }
 
