@@ -88,6 +88,12 @@
   <link rel="apple-touch-icon"
     href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png" />
 
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
   <!-- Fonts & Styles -->
   <link
     href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap"
@@ -95,6 +101,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="./aset/css/style.css" />
   <style>
+    /* Skip to Content - Accessibility */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      background: var(--primary);
+      color: white;
+      padding: 12px 24px;
+      z-index: 100000;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 0 0 8px 0;
+      transition: top 0.3s;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
     /* PopUp Overlay */
     .install-popup-overlay {
       position: fixed;
@@ -307,21 +332,155 @@
     .floating-suggest:hover {
       transform: scale(1.05) translateX(0);
     }
+
+    /* Toast Notification System */
+    .toast-container {
+      position: fixed;
+      top: 90px;
+      right: 20px;
+      z-index: 10001;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toast {
+      background: var(--surface);
+      border: 2px solid var(--border-color);
+      padding: 15px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-flat);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: slideInRight 0.3s ease-out;
+      max-width: 350px;
+    }
+
+    .toast.toast-success {
+      border-color: var(--cat-religi);
+    }
+
+    .toast.toast-error {
+      border-color: var(--danger);
+    }
+
+    .toast.toast-info {
+      border-color: var(--cat-edukasi);
+    }
+
+    .toast-icon {
+      font-size: 1.3rem;
+    }
+
+    .toast.toast-success .toast-icon {
+      color: var(--cat-religi);
+    }
+
+    .toast.toast-error .toast-icon {
+      color: var(--danger);
+    }
+
+    .toast.toast-info .toast-icon {
+      color: var(--cat-edukasi);
+    }
+
+    .toast-content {
+      flex: 1;
+    }
+
+    .toast-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+    }
+
+    .toast-message {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .toast-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 0;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .toast-close:hover {
+      opacity: 1;
+    }
+
+    .toast-exit {
+      animation: slideOutRight 0.3s ease-in forwards;
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideOutRight {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
+
+    /* Menu Overlay for Mobile */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(3px);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- Skip to Content - Accessibility -->
+  <a href="#main-content" class="skip-link">Langsung ke konten utama</a>
 
   <!-- Loading Screen -->
   <div class="loader" id="loader">
     <div class="bouncy-loader"></div>
   </div>
 
+  <!-- Menu Overlay for Mobile -->
+  <div class="menu-overlay" id="menu-overlay"></div>
+
   <!-- REDIRECT POPUP (Non-Android) -->
-  <div class="redirect-popup-overlay" id="redirect-popup">
+  <div class="redirect-popup-overlay" id="redirect-popup" role="dialog" aria-modal="true" aria-labelledby="redirect-title">
     <div class="redirect-popup-card">
-      <div class="redirect-loader"></div>
-      <h2 style="font-family: 'Fredoka', sans-serif; color: var(--text-main, #333); margin-bottom: 15px;">Mendeteksi
+      <div class="redirect-loader" aria-hidden="true"></div>
+      <h2 id="redirect-title" style="font-family: 'Fredoka', sans-serif; color: var(--text-main, #333); margin-bottom: 15px;">Mendeteksi
         Perangkat...</h2>
       <p style="color: var(--text-muted, #666); line-height: 1.6;">Kami menyarankan Anda menggunakan versi Web App yang
         lebih optimal untuk perangkat ini.</p>
@@ -335,19 +494,19 @@
   </div>
 
   <!-- FLOATING SUGGESTION -->
-  <a href="./app" class="floating-suggest" id="floating-suggest">
-    <i class="fas fa-rocket"></i>
+  <a href="./app" class="floating-suggest" id="floating-suggest" aria-label="Beralih ke Versi Web-App">
+    <i class="fas fa-rocket" aria-hidden="true"></i>
     <span>Beralih ke Versi Web-App!</span>
   </a>
 
   <!-- INSTALL POPUP (Muncul Otomatis) -->
-  <div class="install-popup-overlay" id="install-popup">
+  <div class="install-popup-overlay" id="install-popup" role="dialog" aria-modal="true" aria-labelledby="install-title">
     <div class="install-popup-card">
-      <button class="close-popup" id="close-popup-btn"><i class="fas fa-times"></i></button>
-      <div class="install-icon">
+      <button class="close-popup" id="close-popup-btn" aria-label="Tutup popup"><i class="fas fa-times"></i></button>
+      <div class="install-icon" aria-hidden="true">
         <i class="fas fa-mobile-alt"></i>
       </div>
-      <h2>Update Aplikasi!</h2>
+      <h2 id="install-title">Update Aplikasi!</h2>
       <p>Untuk mendapatkan fitur lengkap seperti Musik, Ekstrakurikuler, dan Forum Diskusi, silakan install aplikasi
         mobile kami.</p>
 
@@ -360,7 +519,7 @@
   </div>
 
   <!-- Navigation -->
-  <nav class="navbar">
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Navigasi utama">
     <div class="navbar-container">
       <a href="#" class="navbar-logo">
         <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1766196359/Siswa4_100x_vnzamj.png"
@@ -373,10 +532,10 @@
         <li><a href="index.html?tab=tentang">Tentang</a></li>
       </ul>
       <div class="navbar-actions">
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Ganti tema">
           <i class="fas fa-moon"></i>
         </button>
-        <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
+        <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false">
           <i class="fas fa-bars"></i>
         </button>
       </div>
@@ -384,18 +543,21 @@
   </nav>
 
   <!-- Back to Top -->
-  <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">
+  <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas" title="Kembali ke atas">
     <i class="fas fa-arrow-up"></i>
   </button>
 
   <!-- Floating Action Button -->
-  <button class="fab" id="fab" aria-label="Fun fact">
+  <button class="fab" id="fab" aria-label="Fun fact" title="Klik untuk fakta menarik">
     <i class="fas fa-lightbulb"></i>
   </button>
 
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
   <div class="app-container">
     <h1 class="visually-hidden">Siswa SMKN 4 Banjarmasin - Portal Informasi Terpadu</h1>
-    <main>
+    <main id="main-content">
       <div id="tab-beranda" class="tab-content active">
         <!-- Improved Hero Section -->
         <header class="header">
@@ -415,7 +577,7 @@
               <img
                 src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1770476862/WhatsApp_Image_2026-02-07_at_20.42.39_umweyy.webp"
                 alt="Hero Skenpat" class="hero-img" fetchpriority="high" decoding="async">
-              <div class="floating-icons">
+              <div class="floating-icons" aria-hidden="true">
                 <div class="float-icon icon-1"><i class="fas fa-graduation-cap"></i></div>
                 <div class="float-icon icon-2"><i class="fas fa-code"></i></div>
                 <div class="float-icon icon-3"><i class="fas fa-rocket"></i></div>
@@ -468,254 +630,376 @@
         </section>
 
       </div>
-
+    </main>
   </div>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-links">
       <a href="https://flessan.pages.dev" rel="noopener">Developer</a>
-      <a href="#" onclick="showPrivacyPolicy()">Privacy Policy</a>
+      <a href="#" onclick="showPrivacyPolicy(); return false;">Privacy Policy</a>
     </div>
     <div style="margin-top:15px;">
       &copy; 2026 <a href="https://id.wikipedia.org/wiki/SMK_Negeri_4_Banjarmasin" rel="noopener">Skenpat Pages</a> |
       Siswa SMKN 4 Banjarmasin
     </div>
   </footer>
-  </main>
-  </div>
 
   <script>
-    // Theme Management
-    const initTheme = () => {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      updateThemeIcon(savedTheme);
-    };
+    // Prevent duplicate initialization
+    if (typeof window.skenpatInitialized === 'undefined') {
+      window.skenpatInitialized = true;
 
-    const updateThemeIcon = (theme) => {
-      const themeToggle = document.getElementById('theme-toggle');
-      if (themeToggle) {
-        const icon = themeToggle.querySelector('i');
-        if (icon) {
-          icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+      // Theme Management
+      function initTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+      }
+
+      function updateThemeIcon(theme) {
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+          const icon = themeToggle.querySelector('i');
+          if (icon) {
+            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+          }
         }
       }
-    };
 
-    const toggleTheme = () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeIcon(newTheme);
-    };
+      function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+        showToast('Tema berhasil diganti!', 'success');
+      }
 
-    // Loader & PopUp Trigger
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const loader = document.getElementById('loader');
-        loader.classList.add('hidden');
-        setTimeout(() => loader.remove(), 500);
-      }, 400);
+      // Toast Notification System
+      window.showToast = function(message, type = 'info') {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
 
-      // Trigger Install Popup or Redirect after loader
-      setTimeout(() => {
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-        const isAndroid = /Android/i.test(navigator.userAgent);
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        
+        let iconClass = 'fa-info-circle';
+        if (type === 'success') iconClass = 'fa-check-circle';
+        if (type === 'error') iconClass = 'fa-exclamation-circle';
 
-        // Only for Non-Android (Desktop & iOS)
-        if (!isAndroid) {
-          const redirectPopup = document.getElementById('redirect-popup');
-          const floatingSuggest = document.getElementById('floating-suggest');
-          const cancelBtn = document.getElementById('cancel-redirect-btn');
+        toast.innerHTML = `
+          <i class="fas ${iconClass} toast-icon"></i>
+          <div class="toast-content">
+            <p class="toast-message">${message}</p>
+          </div>
+          <button class="toast-close" aria-label="Tutup">&times;</button>
+        `;
 
-          if (redirectPopup) {
-            redirectPopup.classList.add('active');
+        container.appendChild(toast);
 
-            let timeLeft = 5;
-            const timerElement = document.getElementById('redirect-timer');
+        toast.querySelector('.toast-close').addEventListener('click', () => removeToast(toast));
+        
+        // Auto remove after 4 seconds
+        setTimeout(() => removeToast(toast), 4000);
+      };
 
-            const redirectTimeout = setTimeout(() => {
-              window.location.href = './app';
-            }, 5500);
+      function removeToast(toast) {
+        toast.classList.add('toast-exit');
+        setTimeout(() => toast.remove(), 300);
+      }
 
-            const interval = setInterval(() => {
-              timeLeft -= 1;
-              if (timerElement && timeLeft >= 0) {
-                timerElement.innerText = `Mengalihkan dalam ${timeLeft} detik...`;
+      // Modal Utility
+      window.showModal = function(title, content) {
+        const existingModal = document.getElementById('custom-modal');
+        if (existingModal) existingModal.remove();
+
+        const modal = document.createElement('div');
+        modal.id = 'custom-modal';
+        modal.className = 'modal-overlay active';
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.setAttribute('aria-labelledby', 'modal-title');
+        modal.innerHTML = `
+          <div class="modal-content-wrapper">
+            <div class="modal-header">
+              <h2 id="modal-title">${title}</h2>
+              <button class="modal-close-btn" aria-label="Tutup">&times;</button>
+            </div>
+            <div class="modal-body">
+              ${content}
+            </div>
+            <div class="modal-actions">
+              <button class="btn" style="background:var(--primary); color:white; width:100%; padding:10px; cursor:pointer;" onclick="document.getElementById('custom-modal').remove()">Tutup</button>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(modal);
+
+        // Focus trap for accessibility
+        modal.querySelector('.modal-close-btn').addEventListener('click', () => modal.remove());
+        modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+        
+        // Close on Escape key
+        const escHandler = (e) => {
+          if (e.key === 'Escape') {
+            modal.remove();
+            document.removeEventListener('keydown', escHandler);
+          }
+        };
+        document.addEventListener('keydown', escHandler);
+      };
+
+      window.showPrivacyPolicy = function() {
+        showModal("Kebijakan Privasi", `
+          <div style="line-height: 1.8;">
+            <p><strong>Kebijakan Privasi Skenpat People</strong></p>
+            <p>Kami sangat menghargai privasi Anda. Berikut adalah kebijakan kami:</p>
+            <ul style="margin: 15px 0; padding-left: 20px;">
+              <li>Kami tidak mengumpulkan data pribadi apa pun.</li>
+              <li>Kami tidak melacak aktivitas browsing Anda.</li>
+              <li>Kami hanya menggunakan cookie esensial untuk fungsionalitas situs.</li>
+              <li>Data yang Anda kirim melalui formulir feedback hanya digunakan untuk meningkatkan layanan.</li>
+            </ul>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Terakhir diperbarui: Januari 2026</p>
+          </div>
+        `);
+      };
+
+      // Loader & PopUp Trigger
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const loader = document.getElementById('loader');
+          if (loader) {
+            loader.classList.add('hidden');
+            setTimeout(() => loader.remove(), 500);
+          }
+        }, 400);
+
+        // Trigger Install Popup or Redirect after loader
+        setTimeout(() => {
+          // Check if popup was previously dismissed
+          const popupDismissed = sessionStorage.getItem('popupDismissed');
+          if (popupDismissed) return;
+
+          const isAndroid = /Android/i.test(navigator.userAgent);
+
+          // Only for Non-Android (Desktop & iOS)
+          if (!isAndroid) {
+            const redirectPopup = document.getElementById('redirect-popup');
+            const floatingSuggest = document.getElementById('floating-suggest');
+            const cancelBtn = document.getElementById('cancel-redirect-btn');
+
+            if (redirectPopup) {
+              redirectPopup.classList.add('active');
+
+              let timeLeft = 5;
+              const timerElement = document.getElementById('redirect-timer');
+
+              const redirectTimeout = setTimeout(() => {
+                window.location.href = './app';
+              }, 5500);
+
+              const interval = setInterval(() => {
+                timeLeft -= 1;
+                if (timerElement && timeLeft >= 0) {
+                  timerElement.innerText = `Mengalihkan dalam ${timeLeft} detik...`;
+                }
+                if (timeLeft <= 0) clearInterval(interval);
+              }, 1000);
+
+              if (cancelBtn) {
+                cancelBtn.addEventListener('click', () => {
+                  clearTimeout(redirectTimeout);
+                  clearInterval(interval);
+                  redirectPopup.classList.remove('active');
+                  sessionStorage.setItem('popupDismissed', 'true');
+                  if (floatingSuggest) floatingSuggest.classList.add('visible');
+                  showToast('Popup ditutup. Klik tombol di kanan bawah untuk membuka Web App.', 'info');
+                });
               }
-              if (timeLeft <= 0) clearInterval(interval);
-            }, 1000);
+            }
+            return;
+          }
 
-            if (cancelBtn) {
-              cancelBtn.addEventListener('click', () => {
-                clearTimeout(redirectTimeout);
-                clearInterval(interval);
-                redirectPopup.classList.remove('active');
-                if (floatingSuggest) floatingSuggest.classList.add('visible');
-              });
+          // Only show install popup for Android
+          const popup = document.getElementById('install-popup');
+          if (popup) popup.classList.add('active');
+        }, 1500);
+      });
+
+      // Main initialization
+      document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+
+        // Popup handlers
+        const popup = document.getElementById('install-popup');
+        const closeBtn = document.getElementById('close-popup-btn');
+        const laterBtn = document.getElementById('later-btn');
+
+        const closePopup = () => {
+          if (popup) {
+            popup.classList.remove('active');
+            sessionStorage.setItem('popupDismissed', 'true');
+          }
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', closePopup);
+        if (laterBtn) laterBtn.addEventListener('click', closePopup);
+        if (popup) {
+          popup.addEventListener('click', (e) => {
+            if (e.target === popup) closePopup();
+          });
+        }
+
+        // Navigation Logic
+        const switchTab = (tabName) => {
+          const tabs = document.querySelectorAll('.tab-content');
+          const navLinks = document.querySelectorAll('.navbar-menu a');
+
+          let found = false;
+          tabs.forEach(tab => {
+            if (tab.id === `tab-${tabName}`) {
+              tab.classList.add('active');
+              found = true;
+            } else {
+              tab.classList.remove('active');
+            }
+          });
+
+          if (!found) {
+            const defaultTab = document.getElementById('tab-beranda');
+            if (defaultTab) defaultTab.classList.add('active');
+            tabName = 'beranda';
+          }
+
+          navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href.includes(`tab=${tabName}`)) {
+              link.classList.add('active');
+            } else if (link) {
+              link.classList.remove('active');
+            }
+          });
+
+          window.scrollTo({ top: 0, behavior: 'instant' });
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialTab = urlParams.get('tab') || 'beranda';
+        switchTab(initialTab);
+
+        document.querySelectorAll('.navbar-menu a').forEach(link => {
+          link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.includes('tab=')) {
+              e.preventDefault();
+              const urlParams = new URLSearchParams(href.split('?')[1]);
+              const tabName = urlParams.get('tab');
+              switchTab(tabName);
+              const newUrl = window.location.pathname + '?tab=' + tabName;
+              window.history.pushState({ tab: tabName }, '', newUrl);
+            }
+          });
+        });
+
+        window.addEventListener('popstate', (e) => {
+          const tab = (e.state && e.state.tab) || 'beranda';
+          switchTab(tab);
+        });
+
+        // UI Elements
+        const navbarToggle = document.getElementById('navbar-toggle');
+        const navbarMenu = document.getElementById('navbar-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const backBtn = document.getElementById('backToTop');
+        const fab = document.getElementById('fab');
+        const themeToggle = document.getElementById('theme-toggle');
+
+        if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+
+        // Mobile menu toggle with overlay
+        if (navbarToggle && navbarMenu) {
+          navbarToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+            if (menuOverlay) menuOverlay.classList.toggle('active');
+            const isOpen = navbarMenu.classList.contains('active');
+            navbarToggle.setAttribute('aria-expanded', String(isOpen));
+            const icon = navbarToggle.querySelector('i');
+            if (icon) icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+          });
+
+          // Close menu when clicking overlay
+          if (menuOverlay) {
+            menuOverlay.addEventListener('click', () => {
+              navbarMenu.classList.remove('active');
+              menuOverlay.classList.remove('active');
+              navbarToggle.setAttribute('aria-expanded', 'false');
+              const icon = navbarToggle.querySelector('i');
+              if (icon) {
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+              }
+            });
+          }
+        }
+
+        // Scroll effects
+        window.addEventListener('scroll', () => {
+          const nav = document.querySelector('.navbar');
+          if (nav) {
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+          }
+
+          if (backBtn) {
+            if (window.scrollY > 300) {
+              backBtn.classList.add('visible');
+            } else {
+              backBtn.classList.remove('visible');
             }
           }
-          return;
+        });
+
+        if (backBtn) {
+          backBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
         }
 
-        // Only show install popup for Android
-        const popup = document.getElementById('install-popup');
-        if (popup) popup.classList.add('active');
-      }, 1500); // Trigger logics after 1.5s
-    });
+        if (fab) {
+          fab.addEventListener('click', () => {
+            const funFacts = [
+              "👨‍💻 Website ini dibuat oleh seorang siswa RPL.",
+              "🌐 Pemilik subdomain ini adalah murid dari sekolah.",
+              "✨ Tanpa framework, murni HTML, CSS, dan JS.",
+              "🎨 Desain UI dibuat untuk kenyamanan scrolling di mobile.",
+              "🔧 Dikembangkan dengan ❤️ oleh Thio Saputra"
+            ];
+            const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
+            showModal("Fun Fact", `<p style="text-align: center; padding: 20px;">${randomFact}</p>`);
+          });
+        }
+      });
 
-    // PopUp Close Handlers
-    document.addEventListener('DOMContentLoaded', () => {
-      initTheme();
-      const popup = document.getElementById('install-popup');
-      const closeBtn = document.getElementById('close-popup-btn');
-      const laterBtn = document.getElementById('later-btn');
-
-      const closePopup = () => {
-        popup.classList.remove('active');
-      };
-
-      if (closeBtn) closeBtn.addEventListener('click', closePopup);
-      if (laterBtn) laterBtn.addEventListener('click', closePopup);
-
-      // Close if click outside card
-      if (popup) {
-        popup.addEventListener('click', (e) => {
-          if (e.target === popup) closePopup();
+      // Service Worker Registration
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./aset/js/sw.js')
+            .then(registration => {
+              console.log('ServiceWorker registered:', registration.scope);
+            })
+            .catch(error => {
+              console.log('ServiceWorker registration failed:', error);
+            });
         });
       }
 
-      // Navigation Logic
-      const switchTab = (tabName) => {
-        const tabs = document.querySelectorAll('.tab-content');
-        const navLinks = document.querySelectorAll('.navbar-menu a');
-
-        let found = false;
-        tabs.forEach(tab => {
-          if (tab.id === `tab-${tabName}`) {
-            tab.classList.add('active');
-            found = true;
-          } else {
-            tab.classList.remove('active');
-          }
-        });
-
-        if (!found) {
-          document.getElementById('tab-beranda').classList.add('active');
-          tabName = 'beranda';
-        }
-
-        navLinks.forEach(link => {
-          const href = link.getAttribute('href');
-          if (href && href.includes(`tab=${tabName}`)) {
-            link.classList.add('active');
-          } else if (link) {
-            link.classList.remove('active');
-          }
-        });
-
-        window.scrollTo({ top: 0, behavior: 'instant' });
-      };
-
-      const urlParams = new URLSearchParams(window.location.search);
-      const initialTab = urlParams.get('tab') || 'beranda';
-      switchTab(initialTab);
-
-      document.querySelectorAll('.navbar-menu a').forEach(link => {
-        link.addEventListener('click', (e) => {
-          const href = link.getAttribute('href');
-          if (href && href.includes('tab=')) {
-            e.preventDefault();
-            const urlParams = new URLSearchParams(href.split('?')[1]);
-            const tabName = urlParams.get('tab');
-            switchTab(tabName);
-            const newUrl = window.location.pathname + '?tab=' + tabName;
-            window.history.pushState({ tab: tabName }, '', newUrl);
-          }
-        });
+      // Global error handler
+      window.addEventListener('error', (e) => {
+        console.error('Error:', e.message);
       });
-
-      window.addEventListener('popstate', (e) => {
-        const tab = (e.state && e.state.tab) || 'beranda';
-        switchTab(tab);
-      });
-
-      const navbarToggle = document.getElementById('navbar-toggle');
-      const navbarMenu = document.getElementById('navbar-menu');
-      const backBtn = document.getElementById('backToTop');
-      const fab = document.getElementById('fab');
-      const themeToggle = document.getElementById('theme-toggle');
-
-      themeToggle.addEventListener('click', toggleTheme);
-
-      navbarToggle.addEventListener('click', () => {
-        navbarMenu.classList.toggle('active');
-        const isOpen = navbarMenu.classList.contains('active');
-        const icon = navbarToggle.querySelector('i');
-        icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
-      });
-
-      window.addEventListener('scroll', () => {
-        const nav = document.querySelector('.navbar');
-        if (window.scrollY > 50) nav.classList.add('scrolled');
-        else nav.classList.remove('scrolled');
-
-        if (window.scrollY > 300) {
-          backBtn.classList.add('visible');
-        } else {
-          backBtn.classList.remove('visible');
-        }
-      });
-
-      backBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-
-      fab.addEventListener('click', () => {
-        const funFacts = [
-          "👨‍💻 Website ini dibuat oleh seorang siswa RPL.",
-          "🌐 Pemilik subdomain ini adalah murid dari sekolah.",
-          "✨ Tanpa framework, murni HTML, CSS, dan JS."
-        ];
-        const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
-        showModal("Fun Fact", `<p style="text-align: center; padding: 20px;">${randomFact}</p>`);
-      });
-    });
-
-    // Modal Utility
-    window.showModal = function (title, content) {
-      const existingModal = document.getElementById('custom-modal');
-      if (existingModal) existingModal.remove();
-
-      const modal = document.createElement('div');
-      modal.id = 'custom-modal';
-      modal.className = 'modal-overlay active';
-      modal.innerHTML = `
-        <div class="modal-content-wrapper">
-          <div class="modal-header">
-            <h2>${title}</h2>
-            <button class="modal-close-btn">&times;</button>
-          </div>
-          <div class="modal-body">
-            ${content}
-          </div>
-          <div class="modal-actions">
-            <button class="btn" style="background:var(--primary); color:white; width:100%; padding:10px; cursor:pointer;" onclick="this.closest('.modal-overlay').remove()">Tutup</button>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(modal);
-
-      modal.querySelector('.modal-close-btn').addEventListener('click', () => modal.remove());
-      modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
-    };
-
-    window.showPrivacyPolicy = function () {
-      showModal("Kebijakan Privasi", `<p>Kami tidak mengumpulkan data pribadi apa pun.</p>`);
-    };
+    }
   </script>
 </body>
 
