@@ -226,6 +226,28 @@
           </div>
         </header>
 
+        <!-- Live student desk: lightweight utilities without an account -->
+        <section class="student-desk" aria-label="Akses cepat portal">
+          <div class="desk-presence">
+            <span class="presence-dot" id="portal-status-dot" aria-hidden="true"></span>
+            <div>
+              <span class="desk-eyebrow">Portal siswa</span>
+              <strong id="portal-greeting">Selamat datang di Skenpintas</strong>
+            </div>
+          </div>
+          <div class="desk-time" aria-live="polite">
+            <i class="far fa-calendar-alt" aria-hidden="true"></i>
+            <span id="portal-date">Memuat tanggal…</span>
+            <span class="desk-divider" aria-hidden="true"></span>
+            <time id="portal-clock">--:--</time>
+          </div>
+          <div class="desk-actions" aria-label="Pintasan layanan">
+            <a href="../mapel"><i class="fas fa-calendar-check" aria-hidden="true"></i><span>Jadwal</span></a>
+            <a href="../eskul"><i class="fas fa-users" aria-hidden="true"></i><span>Ekskul</span></a>
+            <a href="?tab=alat"><i class="fas fa-toolbox" aria-hidden="true"></i><span>Alat</span></a>
+          </div>
+        </section>
+
         <!-- Search Focus Overlay -->
         <div class="search-overlay" id="search-overlay"></div>
 
@@ -1465,6 +1487,38 @@
 
     window.addEventListener('scroll', syncSearchSticky);
     syncSearchSticky(); // Initial check
+
+    // Student desk: local date/time, connection feedback, and keyboard shortcut.
+    const portalDate = document.getElementById('portal-date');
+    const portalClock = document.getElementById('portal-clock');
+    const portalGreeting = document.getElementById('portal-greeting');
+    const portalStatusDot = document.getElementById('portal-status-dot');
+
+    const refreshStudentDesk = () => {
+      const now = new Date();
+      const hour = Number(new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Makassar', hour: '2-digit', hour12: false }).format(now));
+      const greeting = hour < 11 ? 'Selamat pagi, siap belajar?' : hour < 15 ? 'Selamat siang, tetap produktif!' : hour < 18 ? 'Selamat sore, sudah cek jadwal?' : 'Selamat malam, istirahat juga ya.';
+      if (portalGreeting) portalGreeting.textContent = greeting;
+      if (portalDate) portalDate.textContent = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Makassar', weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }).format(now);
+      if (portalClock) portalClock.textContent = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Makassar', hour: '2-digit', minute: '2-digit', hour12: false }).format(now).replace('.', ':');
+    };
+    const refreshConnectionStatus = () => {
+      const online = navigator.onLine;
+      portalStatusDot?.classList.toggle('is-offline', !online);
+      portalStatusDot?.setAttribute('title', online ? 'Portal terhubung' : 'Koneksi sedang offline');
+    };
+    refreshStudentDesk();
+    refreshConnectionStatus();
+    window.setInterval(refreshStudentDesk, 30000);
+    window.addEventListener('online', refreshConnectionStatus);
+    window.addEventListener('offline', refreshConnectionStatus);
+    document.addEventListener('keydown', (event) => {
+      const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName);
+      if (event.key === '/' && !typing) {
+        event.preventDefault();
+        globalSearchInput?.focus();
+      }
+    });
 
     // Initial Render
     renderRecentSearches();
