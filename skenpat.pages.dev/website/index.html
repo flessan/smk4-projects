@@ -1,1006 +1,459 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#FF9F43" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#FFFBF5" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#15130F" media="(prefers-color-scheme: dark)" />
 
-  <!-- SEO Primary Meta Tags (Optimized) -->
-  <title>Skenpat People | Portal Resmi Siswa SMKN 4 Banjarmasin</title>
+  <title>Skenpat People | Portal Resmi Siswa SMKN 4 Banjarmasin - Cari Informasi Sekolah</title>
   <meta name="title" content="Skenpat People | Portal Resmi Siswa SMKN 4 Banjarmasin" />
-  <meta name="description"
-    content="Portal Digital Terpadu Siswa SMKN 4 Banjarmasin. Akses jadwal pelajaran, informasi ekstrakurikuler, berita terkini, dan layanan digital siswa. Cek jadwal dan kegiatan Siswa di sini." />
-  <meta name="keywords"
-    content="SMKN 4 Banjarmasin, Siswa SMKN 4, Skenpat People, Skenpat, Jadwal Pelajaran SMKN 4, Portal Siswa, Ekstrakurikuler SMKN 4, Berita Sekolah Banjarmasin, Siswa Skenpat, SMK Negeri 4 Banjarmasin" />
+  <meta name="description" content="Portal Digital Terpadu SMKN 4 Banjarmasin. Cari jadwal pelajaran, ekstrakurikuler, mars sekolah, berita dan layanan siswa dalam satu pencarian cepat seperti Google. Tersedia versi Aplikasi (PWA) native." />
+  <meta name="keywords" content="SMKN 4 Banjarmasin, Skenpat, Skenpat People, Portal Siswa, Jadwal Mapel SMKN 4, Eskul SMKN 4, SMKN 4 BJM, sekolah banjarmasin, PWA Skenpat" />
   <meta name="author" content="Thio Saputra, Skenpat People Team" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-
-  <!-- Canonical URL (Penting untuk mencegah duplikat konten) -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" href="https://skenpat.pages.dev/" />
 
-  <!-- Open Graph / Facebook / WhatsApp (Social Media SEO) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://skenpat.pages.dev/" />
   <meta property="og:title" content="Skenpat People | Portal Resmi Siswa SMKN 4 Banjarmasin" />
-  <meta property="og:description"
-    content="Akses jadwal pelajaran, informasi ekstrakurikuler, dan berita sekolah SMKN 4 Banjarmasin dalam satu portal digital terpadu." />
-  <meta property="og:image"
-    content="https://res.cloudinary.com/dahcxjdbl/image/upload/v1766196359/Siswa4_100x_vnzamj.png" />
+  <meta property="og:description" content="Google-nya anak SMKN 4. Cari jadwal, eskul, dan info sekolah dalam sekejap. Buka versi Aplikasi native untuk pengalaman terbaik." />
+  <meta property="og:image" content="https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png" />
   <meta property="og:locale" content="id_ID" />
   <meta property="og:site_name" content="Skenpat People" />
 
-  <!-- Twitter Card SEO -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://skenpat.pages.dev/" />
   <meta property="twitter:title" content="Skenpat People | Portal Resmi Siswa SMKN 4 Banjarmasin" />
-  <meta property="twitter:description"
-    content="Akses jadwal pelajaran, informasi ekstrakurikuler, dan berita sekolah SMKN 4 Banjarmasin dalam satu portal digital terpadu." />
-  <meta property="twitter:image"
-    content="https://res.cloudinary.com/dahcxjdbl/image/upload/v1766196359/Siswa4_100x_vnzamj.png" />
+  <meta property="twitter:description" content="Cari jadwal, eskul, mars dan info SMKN 4 dalam satu pencarian cepat. Versi App tersedia." />
+  <meta property="twitter:image" content="https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png" />
 
-  <!-- JSON-LD Structured Data (Data Terstruktur Google) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="dns-prefetch" href="//res.cloudinary.com" />
+
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png" />
+  <link rel="apple-touch-icon" href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png" />
+  <link rel="manifest" href="./manifest.json" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@400;500;600;700&family=Google+Sans:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./aset/css/style.css" />
+
+  <!-- JSON-LD: Organization, WebSite, SearchAction, SoftwareApplication, FAQ -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "Siswa SMKN 4 Banjarmasin",
-    "alternateName": "Skenpat People",
-    "url": "https://skenpat.pages.dev/",
-    "logo": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1766196359/Siswa4_100x_vnzamj.png",
-    "description": "Portal Digital Terpadu Siswa SMKN 4 Banjarmasin untuk mempermudah akses informasi akademik dan kegiatan siswa.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Banjarmasin",
-      "addressRegion": "Kalimantan Selatan",
-      "addressCountry": "ID"
-    },
-    "sameAs": [
-      "https://www.instagram.com/Siswasmkn4bjm/",
-      "https://www.youtube.com/channel/UCxbHXnN7paUGIs_NRdTpc0Q"
+    "@context":"https://schema.org",
+    "@type":"EducationalOrganization",
+    "name":"Siswa SMKN 4 Banjarmasin",
+    "alternateName":["Skenpat People","Skenpat","Skenpintas"],
+    "url":"https://skenpat.pages.dev/",
+    "logo":"https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png",
+    "description":"Portal Digital Terpadu Siswa SMKN 4 Banjarmasin",
+    "address":{"@type":"PostalAddress","addressLocality":"Banjarmasin","addressRegion":"Kalimantan Selatan","addressCountry":"ID"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"Skenpat People",
+    "url":"https://skenpat.pages.dev/",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://skenpat.pages.dev/app/?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Skenpat People App",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"Android, Web",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"IDR"},
+    "url":"https://skenpat.pages.dev/app/",
+    "description":"Aplikasi PWA native Material You untuk siswa SMKN 4 Banjarmasin. Jadwal mapel, eskul, mars, forum dan musik."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Beranda","item":"https://skenpat.pages.dev/"},
+      {"@type":"ListItem","position":2,"name":"Aplikasi","item":"https://skenpat.pages.dev/app/"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Apa itu Skenpat People?","acceptedAnswer":{"@type":"Answer","text":"Skenpat People adalah portal digital terpadu buatan siswa SMKN 4 Banjarmasin untuk memudahkan akses jadwal pelajaran, ekstrakurikuler, informasi sekolah dan layanan siswa dalam satu pintu, dengan versi web dan aplikasi PWA native Material You."}},
+      {"@type":"Question","name":"Apakah ada aplikasi Skenpat?","acceptedAnswer":{"@type":"Answer","text":"Ya. Skenpat tersedia sebagai PWA native di /app yang bisa di-install di Android, iOS dan Desktop. Buka skenpat.pages.dev/app lalu pilih Install atau Tambahkan ke Home Screen."}},
+      {"@type":"Question","name":"Bagaimana cara mencari jadwal mapel?","acceptedAnswer":{"@type":"Answer","text":"Ketik 'jadwal' atau nama kelas di kotak pencarian utama. Hasil instan akan muncul dan bisa langsung membuka halaman mapel di aplikasi."}},
+      {"@type":"Question","name":"Apakah Skenpat resmi dari sekolah?","acceptedAnswer":{"@type":"Answer","text":"Skenpat adalah inisiatif siswa RPL SMKN 4 Banjarmasin (Thio Saputra & tim) yang mendukung digitalisasi sekolah, terhubung ke domain resmi smkn4bjm.sch.id untuk berita dan perpus."}}
     ]
   }
   </script>
 
-  <!-- Tambahan khusus untuk Nama Situs di Google -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Skenpat People",
-  "alternateName": ["Siswa SMKN 4 Banjarmasin", "Skenpat"],
-  "url": "https://skenpat.pages.dev/"
-}
-</script>
-
-  <!-- Performance Optimization (Preconnect & DNS Prefetch) -->
-  <link rel="dns-prefetch" href="//res.cloudinary.com" />
-  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
-  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <!-- Favicon & Icons -->
-  <link rel="icon" type="image/png"
-    href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png" />
-  <link rel="apple-touch-icon"
-    href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png" />
-
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="./manifest.json" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-
-  <!-- Fonts & Styles -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="./aset/css/style.css" />
   <style>
-    /* Skip to Content - Accessibility */
-    .skip-link {
-      position: absolute;
-      top: -100px;
-      left: 0;
-      background: var(--primary);
-      color: white;
-      padding: 12px 24px;
-      z-index: 100000;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 0 0 8px 0;
-      transition: top 0.3s;
-    }
-
-    .skip-link:focus {
-      top: 0;
-    }
-
-    /* PopUp Overlay */
-    .install-popup-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(5px);
-      z-index: 99999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .install-popup-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* PopUp Card */
-    .install-popup-card {
-      background: var(--bg-card, #ffffff);
-      padding: 2.5rem;
-      border-radius: 20px;
-      text-align: center;
-      max-width: 380px;
-      width: 90%;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-      transform: scale(0.8);
-      transition: transform 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .install-popup-overlay.active .install-popup-card {
-      transform: scale(1);
-    }
-
-    .install-popup-card .close-popup {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: rgba(0, 0, 0, 0.05);
-      border: none;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1rem;
-      color: var(--text-muted, #666);
-      transition: 0.2s;
-    }
-
-    .install-popup-card .close-popup:hover {
-      background: rgba(255, 0, 0, 0.1);
-      color: red;
-    }
-
-    .install-icon {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, #FF9F43, #ee5a24);
-      border-radius: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto 1.5rem;
-      font-size: 2.5rem;
-      color: white;
-      box-shadow: 0 10px 20px rgba(255, 159, 67, 0.3);
-    }
-
-    .install-popup-card h2 {
-      font-family: 'Fredoka', sans-serif;
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
-      color: var(--text-main, #333);
-    }
-
-    .install-popup-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted, #666);
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-
-    .install-popup-card .btn-install {
-      display: block;
-      width: 100%;
-      padding: 1rem;
-      background: linear-gradient(135deg, #00b894, #00cec9);
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-      margin-bottom: 10px;
-    }
-
-    .install-popup-card .btn-install:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 184, 148, 0.4);
-    }
-
-    .btn-later {
-      background: transparent;
-      border: none;
-      color: var(--text-muted, #888);
-      cursor: pointer;
-      font-size: 0.85rem;
-      text-decoration: underline;
-    }
-
-    /* Redirect PopUp for Desktop */
-    .redirect-popup-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
-      z-index: 100000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .redirect-popup-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .redirect-popup-card {
-      background: var(--bg-card, #ffffff);
-      padding: 3rem 2rem;
-      border-radius: 30px;
-      text-align: center;
-      max-width: 420px;
-      width: 90%;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      transform: translateY(20px) scale(0.95);
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1px solid rgba(255, 159, 67, 0.2);
-    }
-
-    .redirect-popup-overlay.active .redirect-popup-card {
-      transform: translateY(0) scale(1);
-    }
-
-    .redirect-loader {
-      width: 48px;
-      height: 48px;
-      border: 5px solid #FF9F43;
-      border-bottom-color: transparent;
-      border-radius: 50%;
-      display: inline-block;
-      box-sizing: border-box;
-      animation: rotation 1s linear infinite;
-      margin-bottom: 20px;
-    }
-
-    @keyframes rotation {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* Floating Suggestion (Non-Android) */
-    .floating-suggest {
-      position: fixed;
-      bottom: 100px;
-      right: 20px;
-      background: linear-gradient(135deg, #FF9F43, #ee5a24);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 50px;
-      box-shadow: 0 10px 20px rgba(255, 159, 67, 0.3);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      text-decoration: none;
-      font-weight: 600;
-      transform: translateX(120%);
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .floating-suggest.visible {
-      transform: translateX(0);
-    }
-
-    .floating-suggest i {
-      font-size: 1.2rem;
-    }
-
-    .floating-suggest:hover {
-      transform: scale(1.05) translateX(0);
-    }
-
-    /* Toast Notification System */
-    .toast-container {
-      position: fixed;
-      top: 90px;
-      right: 20px;
-      z-index: 10001;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .toast {
-      background: var(--surface);
-      border: 2px solid var(--border-color);
-      padding: 15px 20px;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-flat);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      animation: slideInRight 0.3s ease-out;
-      max-width: 350px;
-    }
-
-    .toast.toast-success {
-      border-color: var(--cat-religi);
-    }
-
-    .toast.toast-error {
-      border-color: var(--danger);
-    }
-
-    .toast.toast-info {
-      border-color: var(--cat-edukasi);
-    }
-
-    .toast-icon {
-      font-size: 1.3rem;
-    }
-
-    .toast.toast-success .toast-icon {
-      color: var(--cat-religi);
-    }
-
-    .toast.toast-error .toast-icon {
-      color: var(--danger);
-    }
-
-    .toast.toast-info .toast-icon {
-      color: var(--cat-edukasi);
-    }
-
-    .toast-content {
-      flex: 1;
-    }
-
-    .toast-title {
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 2px;
-    }
-
-    .toast-message {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .toast-close {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 1.2rem;
-      padding: 0;
-      opacity: 0.6;
-      transition: opacity 0.2s;
-    }
-
-    .toast-close:hover {
-      opacity: 1;
-    }
-
-    .toast-exit {
-      animation: slideOutRight 0.3s ease-in forwards;
-    }
-
-    @keyframes slideInRight {
-      from {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes slideOutRight {
-      from {
-        transform: translateX(0);
-        opacity: 1;
-      }
-      to {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-    }
-
-    /* Menu Overlay for Mobile */
-    .menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(3px);
-      z-index: 998;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .menu-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
+    /* Critical landing inline for perf */
+    .skip-link{position:absolute;top:-100px;left:0;background:var(--primary);color:#fff;padding:10px 18px;z-index:99999;border-radius:0 0 12px 0;text-decoration:none;font-weight:700}
+    .skip-link:focus{top:0}
   </style>
 </head>
+<body class="g-shell" data-theme="light">
+  <a href="#main-content" class="skip-link">Langsung ke pencarian</a>
 
-<body>
-
-  <!-- Skip to Content - Accessibility -->
-  <a href="#main-content" class="skip-link">Langsung ke konten utama</a>
-
-  <!-- Loading Screen -->
-  <div class="loader" id="loader">
-    <div class="bouncy-loader"></div>
-  </div>
-
-  <!-- Menu Overlay for Mobile -->
-  <div class="menu-overlay" id="menu-overlay"></div>
-
-  <!-- REDIRECT POPUP (Non-Android) -->
-  <div class="redirect-popup-overlay" id="redirect-popup" role="dialog" aria-modal="true" aria-labelledby="redirect-title">
-    <div class="redirect-popup-card">
-      <div class="redirect-loader" aria-hidden="true"></div>
-      <h2 id="redirect-title" style="font-family: 'Fredoka', sans-serif; color: var(--text-main, #333); margin-bottom: 15px;">Mendeteksi
-        Perangkat...</h2>
-      <p style="color: var(--text-muted, #666); line-height: 1.6;">Kami menyarankan Anda menggunakan versi Web App yang
-        lebih optimal untuk perangkat ini.</p>
-      <p id="redirect-timer" style="margin-top: 20px; font-weight: 600; color: #FF9F43;">Mengalihkan dalam 5 detik...
-      </p>
-      <div style="margin-top: 25px;">
-        <button class="btn-later" id="cancel-redirect-btn"
-          style="text-decoration: none; color: #666; font-weight: 600; border: 1px solid #ddd; padding: 10px 25px; border-radius: 50px;">Batalkan</button>
-      </div>
+  <!-- Header ala Google - kanan minimal -->
+  <header class="g-header">
+    <div class="g-header-left">
+      <a href="/" class="g-header-link" style="font-weight:700; letter-spacing:-0.02em"><i class="fas fa-layer-group" style="color:var(--primary)"></i> Skenpat</a>
+      <a href="/mapel/" class="g-header-link">Jadwal</a>
+      <a href="/eskul/" class="g-header-link">Eskul</a>
     </div>
-  </div>
-
-  <!-- FLOATING SUGGESTION -->
-  <a href="./app" class="floating-suggest" id="floating-suggest" aria-label="Beralih ke Versi Web-App">
-    <i class="fas fa-rocket" aria-hidden="true"></i>
-    <span>Beralih ke Versi Web-App!</span>
-  </a>
-
-  <!-- INSTALL POPUP (Muncul Otomatis) -->
-  <div class="install-popup-overlay" id="install-popup" role="dialog" aria-modal="true" aria-labelledby="install-title">
-    <div class="install-popup-card">
-      <button class="close-popup" id="close-popup-btn" aria-label="Tutup popup"><i class="fas fa-times"></i></button>
-      <div class="install-icon" aria-hidden="true">
-        <i class="fas fa-mobile-alt"></i>
-      </div>
-      <h2 id="install-title">Update Aplikasi!</h2>
-      <p>Untuk mendapatkan fitur lengkap seperti Musik, Ekstrakurikuler, dan Forum Diskusi, silakan install aplikasi
-        mobile kami.</p>
-
-      <a href="https://github.com/skenpat/skenpat/releases/download/v0.0.0-alpha_webview/skenpintas.apk"
-        class="btn-install" download>
-        <i class="fas fa-download"></i> Install Sekarang
-      </a>
-      <button class="btn-later" id="later-btn">Nanti Saja, Lanjut Web</button>
+    <div class="g-header-right">
+      <button class="g-header-link" id="theme-toggle-g" aria-label="Ganti tema" style="border:none; cursor:pointer; background:transparent"><i class="fas fa-moon"></i> Tema</button>
+      <a href="./app/" class="g-header-link m3" id="app-link-header"><i class="fas fa-rocket"></i> Buka Aplikasi</a>
+      <a href="https://github.com/skenpat/skenpat/releases/download/v0.0.0-alpha_webview/skenpintas.apk" class="g-header-link accent" download><i class="fas fa-download"></i> Install APK</a>
     </div>
-  </div>
+  </header>
 
-  <!-- Navigation -->
-  <nav class="navbar" id="navbar" role="navigation" aria-label="Navigasi utama">
-    <div class="navbar-container">
-      <a href="#" class="navbar-logo">
-        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1766196359/Siswa4_100x_vnzamj.png"
-          alt="Logo Siswa SMKN 4 Banjarmasin" loading="lazy">
-        <span>SKENPINTAS</span>
-      </a>
-      <ul class="navbar-menu" id="navbar-menu">
-        <li><a href="index.html?tab=beranda">Beranda</a></li>
-        <li><a href="index.html">Download Aplikasinya!</a></li>
-        <li><a href="index.html?tab=tentang">Tentang</a></li>
-      </ul>
-      <div class="navbar-actions">
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Ganti tema">
-          <i class="fas fa-moon"></i>
-        </button>
-        <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <i class="fas fa-bars"></i>
-        </button>
+  <main class="g-main" id="main-content">
+    <!-- Hero Google Style Centered -->
+    <section class="g-hero" aria-label="Pencarian Skenpat">
+      <div class="g-logo-wrap">
+        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png" alt="Logo Skenpat SMKN 4 Banjarmasin" width="96" height="96" class="g-logo-img" fetchpriority="high" />
+        <h1 class="g-logo-text" style="font-family: var(--font-head)"><span style="color:#4285F4">S</span><span style="color:#EA4335">k</span><span style="color:#FBBC05">e</span><span style="color:#4285F4">n</span><span style="color:#34A853">p</span><span style="color:#EA4335">a</span><span style="color:var(--text-main)">t</span></h1>
+        <p class="g-tagline">Portal digital terpadu SMKN 4 Banjarmasin — cari jadwal, eskul, mars & layanan siswa seperti Google</p>
       </div>
-    </div>
-  </nav>
 
-  <!-- Back to Top -->
-  <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas" title="Kembali ke atas">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
-  <!-- Floating Action Button -->
-  <button class="fab" id="fab" aria-label="Fun fact" title="Klik untuk fakta menarik">
-    <i class="fas fa-lightbulb"></i>
-  </button>
-
-  <!-- Toast Container -->
-  <div class="toast-container" id="toast-container" aria-live="polite"></div>
-
-  <div class="app-container">
-    <h1 class="visually-hidden">Siswa SMKN 4 Banjarmasin - Portal Informasi Terpadu</h1>
-    <main id="main-content">
-      <div id="tab-beranda" class="tab-content active">
-        <!-- Improved Hero Section -->
-        <header class="header">
-          <div class="header-container">
-            <div class="header-content">
-              <div class="header-badge">🚀 Platform Digital Skenpat</div>
-              <h2 class="hero-title">Siswa <span>SMKN 4</span> Banjarmasin</h2>
-              <p>Portal Informasi Terpadu & Hub Kreativitas Siswa. Jelajahi berbagai layanan, kegiatan, dan sumber daya
-                akademik dalam satu pintu.</p>
-              <div class="header-cta">
-                <a href="./feedback" class="cta-pill primary">Umpan Balik<i class="fas fa-arrow-right"></i></a>
-                <a href="?tab=tentang" class="cta-pill secondary">Tentang Kami</a>
-              </div>
-            </div>
-            <div class="header-image-wrapper">
-              <div class="hero-image-glow"></div>
-              <img
-                src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1770476862/WhatsApp_Image_2026-02-07_at_20.42.39_umweyy.webp"
-                alt="Hero Skenpat" class="hero-img" fetchpriority="high" decoding="async">
-              <div class="floating-icons" aria-hidden="true">
-                <div class="float-icon icon-1"><i class="fas fa-graduation-cap"></i></div>
-                <div class="float-icon icon-2"><i class="fas fa-code"></i></div>
-                <div class="float-icon icon-3"><i class="fas fa-rocket"></i></div>
-              </div>
+      <div class="g-search-wrap">
+        <div class="g-search-bar" id="g-search-bar">
+          <i class="fas fa-search g-search-icon" aria-hidden="true"></i>
+          <input type="text" id="g-search-input" class="g-search-input" placeholder="Cari jadwal, eskul, mars, atau ketik pertanyaan..." autocomplete="off" aria-label="Cari di Skenpat" autofocus />
+          <div class="g-search-actions">
+            <button class="g-search-chip" id="voice-search-btn-landing" title="Penelusuran suara" aria-label="Cari dengan suara"><i class="fas fa-microphone"></i></button>
+            <button class="g-search-chip primary" id="search-clear" title="Hapus" aria-label="Hapus pencarian" style="display:none"><i class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <!-- Preview dropdown ala Google -->
+        <div class="g-search-preview" id="g-search-preview">
+          <div class="g-search-preview-section" id="recent-sec">
+            <h5><i class="fas fa-clock-rotate-left"></i> Pencarian terbaru</h5>
+            <div class="g-trend-list" id="recent-list"></div>
+          </div>
+          <div class="g-search-preview-section">
+            <h5><i class="fas fa-fire"></i> Populer di Skenpat</h5>
+            <div class="g-trend-list" id="trend-list">
+              <span class="g-trend-tag" data-q="Jadwal Mapel"><i class="fas fa-graduation-cap"></i> Jadwal</span>
+              <span class="g-trend-tag" data-q="Ekstrakurikuler"><i class="fas fa-users"></i> Eskul</span>
+              <span class="g-trend-tag" data-q="Mars Skenpat"><i class="fas fa-music"></i> Mars</span>
+              <span class="g-trend-tag" data-q="Perpustakaan"><i class="fas fa-book"></i> Perpus</span>
             </div>
           </div>
-        </header>
-
-        <!-- Portal Utama Dashboard -->
-        <section class="card-balance">
-          <h2>Portal Utama (Web App)</h2>
-          <p class="subtitle">Akses cepat informasi akademik. Untuk fitur lengkap, silakan install aplikasi. yaww</p>
-          <div class="portal-grid">
-
-            <!-- Fitur Penting: Jadwal Mapel -->
-            <a href="./mapel" class="portal-card">
-              <div class="icon-wrapper"><i class="fas fa-graduation-cap"></i></div>
-              <h4>Jadwal Mapel</h4>
-              <p>Akses jadwal mata pelajaran kelas harian SMKN 4 BJM secara praktis. Pastikan kalian tidak melewatkan
-                informasi pelajaran besok.</p>
-            </a>
-
-            <!-- Fitur Install di Grid -->
-            <a href="https://github.com/skenpat/skenpat/releases/download/v0.0.0-alpha_webview/skenpintas.apk"
-              class="portal-card" download>
-              <div class="icon-wrapper"><i class="fas fa-mobile-alt"></i></div>
-              <h4>Install Aplikasi</h4>
-              <p>Butuh fitur lengkap seperti Mars Skenpat, Ekstrakurikuler, & Forum? Download aplikasi sekarang!</p>
-            </a>
-
+          <div class="g-search-preview-section" id="instant-sec">
+            <h5><i class="fas fa-bolt"></i> Hasil instan</h5>
+            <div class="g-instant-list" id="instant-list"></div>
           </div>
-        </section>
-
+        </div>
       </div>
 
-      <!-- Tentang Section -->
-      <div id="tab-tentang" class="tab-content">
-        <header class="header">
-          <div class="header-container">
-            <div class="header-content">
-              <div class="header-badge">📖 Profil Organisasi</div>
-              <h2 class="hero-title">Tentang <span>Skenpat</span> Digital</h2>
-              <p>Mengenal lebih jauh visi, misi, dan tim di balik pengembangan platform digital Siswa SMKN 4 Banjarmasin.
-              </p>
-            </div>
-          </div>
-        </header>
-        <section class="section" style="padding: 2rem;">
-          <p>Portal ini dirancang oleh Tim Siswa untuk memudahkan akses informasi seluruh warga sekolah.</p>
-        </section>
-
+      <div class="g-actions">
+        <button class="g-btn g-btn-secondary" id="btn-search"><i class="fas fa-magnifying-glass"></i> Penelusuran Skenpat</button>
+        <a class="g-btn g-btn-secondary" href="./app/" id="btn-lucky"><i class="fas fa-dice"></i> Saya Lagi Belajar</a>
+        <button class="g-btn g-btn-primary" id="btn-install-pwa" style="display:none"><i class="fas fa-download"></i> Install Aplikasi</button>
       </div>
-    </main>
-  </div>
+      <p class="g-sub">Skenpat ditawarkan dalam: <a href="#">Bahasa Indonesia</a> • <a href="./app/">Versi Aplikasi (PWA)</a> • <a href="https://smkn4bjm.sch.id">smkn4bjm.sch.id</a></p>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="https://flessan.pages.dev" rel="noopener">Developer</a>
-      <a href="#" onclick="showPrivacyPolicy(); return false;">Privacy Policy</a>
+      <!-- App Suggestion Card - optional to install, not forced redirect -->
+      <div class="g-install-card" id="g-install-card">
+        <div class="g-install-icon"><i class="fas fa-mobile-screen"></i></div>
+        <div class="g-install-body">
+          <h4>Rasakan versi Aplikasi — lebih cepat, bisa offline, Material You</h4>
+          <p>Aplikasi native dengan <b>bottom navigation, dark mode sempurna, music player mini, dan forum real-time</b>. Buka di <b>/app</b> atau install sebagai APK/PWA.</p>
+        </div>
+        <div class="g-install-actions" style="flex-direction:column">
+          <a href="./app/" class="g-btn g-btn-primary" style="justify-content:center"><i class="fas fa-rocket"></i> Buka /app</a>
+          <button class="g-btn g-btn-secondary" id="dismiss-card" style="justify-content:center">Tetap di Web</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO Rich Content - below the fold -->
+    <div class="g-seo">
+      <section class="g-seo-section">
+        <h2><i class="fas fa-compass" style="color:var(--primary)"></i> Apa itu Skenpat People?</h2>
+        <p class="lead">Skenpat People adalah “Google-nya anak SMKN 4” — portal digital terpadu yang dibuat siswa RPL untuk mengcentralkan semua layanan sekolah: jadwal mata pelajaran, daftar eskul, mars sekolah, perpustakaan, berita dan forum. Tersedia versi <b>web cepat (landing ini)</b> untuk SEO dan discovery, dan versi <b>/app native PWA Material You</b> untuk penggunaan harian.</p>
+        <div class="g-feature-grid">
+          <div class="g-feature">
+            <i class="fas fa-magnifying-glass"></i>
+            <h3>Pencarian Instan</h3>
+            <p>Ketik langsung seperti Google. Hasil dari jadwal, artikel, alat, eskul muncul instan tanpa reload.</p>
+          </div>
+          <div class="g-feature">
+            <i class="fas fa-mobile-screen-button"></i>
+            <h3>Native seperti Aplikasi</h3>
+            <p>/app memakai bottom navigation, navigation rail, FAB, mini player — rasa aplikasi Android asli dengan Material You 3 Expressive.</p>
+          </div>
+          <div class="g-feature">
+            <i class="fas fa-moon"></i>
+            <h3>Dark Mode Sempurna</h3>
+            <p>Didesain ulang dengan M3 dark tonal surfaces — tidak lagi orange menyilaukan, tapi lembut, kontras ideal dan hemat mata.</p>
+          </div>
+          <div class="g-feature">
+            <i class="fas fa-bolt"></i>
+            <h3>SEO Super Kaya & PWA</h3>
+            <p>Landing ini memakai FAQ, WebSite SearchAction, SoftwareApplication schema. Bisa di-install dan offline-ready.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="g-seo-section" id="fitur">
+        <h2><i class="fas fa-layer-group" style="color:var(--primary)"></i> Jelajahi Skenpat — 1 klik ke yang penting</h2>
+        <p class="lead">Akses cepat yang paling sering dipakai siswa SMKN 4 Banjarmasin.</p>
+        <div class="g-feature-grid">
+          <a href="./app/?tab=beranda" class="g-feature m3-ripple" style="text-decoration:none;color:inherit">
+            <i class="fas fa-house"></i>
+            <h3>Beranda Aplikasi</h3>
+            <p>Buka dashboard lengkap dengan forum Cbox, timeline acara, dan pemutar mars.</p>
+          </a>
+          <a href="./mapel/" class="g-feature m3-ripple" style="text-decoration:none;color:inherit">
+            <i class="fas fa-calendar-check"></i>
+            <h3>Jadwal Mapel</h3>
+            <p>Cek jadwal mata pelajaran harian per kelas, praktis dan selalu update.</p>
+          </a>
+          <a href="./eskul/" class="g-feature m3-ripple" style="text-decoration:none;color:inherit">
+            <i class="fas fa-users-gear"></i>
+            <h3>Ekstrakurikuler</h3>
+            <p>Lihat semua eskul, jadwal latihan dan cara daftar online.</p>
+          </a>
+          <a href="./app/?tab=alat" class="g-feature m3-ripple" style="text-decoration:none;color:inherit">
+            <i class="fas fa-screwdriver-wrench"></i>
+            <h3>Alat Bantu</h3>
+            <p>Wheel pemilih, generator absen, dan tools kreatif siswa lainnya.</p>
+          </a>
+        </div>
+        <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap">
+          <a href="./app/" class="g-btn g-btn-primary"><i class="fas fa-rocket"></i> Buka Versi Aplikasi Lengkap</a>
+          <a href="https://smkn4bjm.sch.id" class="g-btn g-btn-secondary"><i class="fas fa-school"></i> Website Resmi Sekolah</a>
+        </div>
+      </section>
+
+      <section class="g-seo-section">
+        <h2><i class="fas fa-circle-question" style="color:var(--primary)"></i> FAQ — Pertanyaan Populer</h2>
+        <div class="g-faq-list" id="faq-list">
+          <div class="g-faq-item"><button class="g-faq-q">Apa bedanya landing ini dengan /app? <i class="fas fa-chevron-down"></i></button><div class="g-faq-a">Landing ini (/ ) didesain untuk Google — ringan, SEO kaya, pencarian instan. Tombolnya fokus membawa kamu ke depth. Sementara /app adalah aplikasi PWA native dengan navigasi bawah, dark mode optimal, musik dan forum. Pilihan tetap di kamu.</div></div>
+          <div class="g-faq-item"><button class="g-faq-q">Bagaimana install biar jadi aplikasi? <i class="fas fa-chevron-down"></i></button><div class="g-faq-a">Di Android Chrome, klik Install Aplikasi pada hero. Atau buka /app lalu pilih “Tambahkan ke Layar Utama”. Di desktop, ikon install muncul di address bar. Juga tersedia file APK langsung.</div></div>
+          <div class="g-faq-item"><button class="g-faq-q">Apakah dark mode sudah diperbaiki? <i class="fas fa-chevron-down"></i></button><div class="g-faq-a">Ya. Sekarang dark mode bukan hanya warna gelap tapi Material You 3: surface #15130F, container #231F1D hingga #383531, outline halus, shadow memakai overlay putih tipis bukan hitam pekat. Nyaman untuk mata malam.</div></div>
+          <div class="g-faq-item"><button class="g-faq-q">Fitur apa yang sebelumnya rusak dan sekarang diperbaiki? <i class="fas fa-chevron-down"></i></button><div class="g-faq-a">Menu mobile yang tumpang tindih, navbar rgba orange saat dark, search yang tidak fokus, auto-redirect paksa tanpa pilihan, toast yang bertabrakan, music player tidak ada mini mode, dan PWA prompt yang tidak muncul — semua diperbaiki dengan M3 snackbar, mini player bar, dan beforeinstallprompt handling.</div></div>
+        </div>
+      </section>
+
+      <section class="g-seo-section" style="text-align:center">
+        <h2>Belum yakin?</h2>
+        <p class="lead" style="max-width:640px; margin:8px auto 18px">Lihat dulu versi aplikasi atau tanya langsung di forum. Semua gratis, open source, buatan siswa untuk siswa.</p>
+        <div class="g-actions" style="justify-content:center">
+          <a href="./app/" class="g-btn g-btn-primary" style="font-size:1rem; padding:14px 26px"><i class="fas fa-star"></i> Rasakan App Native Material You</a>
+        </div>
+        <p style="margin-top:14px; font-size:0.85rem; color:var(--text-muted)">Dibuat dengan <i class="fas fa-heart" style="color:#EA4335"></i> oleh <a href="https://flessan.pages.dev" target="_blank" rel="noopener" style="color:var(--primary); font-weight:700">Thio Saputra</a> — Siswa RPL SMKN 4 Banjarmasin</p>
+      </section>
     </div>
-    <div style="margin-top:15px;">
-      &copy; 2026 <a href="https://id.wikipedia.org/wiki/SMK_Negeri_4_Banjarmasin" rel="noopener">Skenpat Pages</a> |
-      Siswa SMKN 4 Banjarmasin
+  </main>
+
+  <footer class="g-footer">
+    <div class="g-footer-row">
+      <div>Indonesia • <span style="font-weight:600">Banjarmasin, Kalimantan Selatan</span> • SMKN 4 Banjarmasin</div>
+      <div id="footer-year"></div>
+    </div>
+    <div class="g-footer-row" style="border-top:1px solid var(--md-outline-variant); padding-top:12px">
+      <div style="display:flex; flex-wrap:wrap; gap:4px">
+        <a href="https://flessan.pages.dev">Developer</a>
+        <a href="#" id="priv-link">Privasi</a>
+        <a href="#" id="terms-link">Syarat</a>
+        <a href="./app/">Aplikasi</a>
+        <a href="/mapel/">Jadwal</a>
+        <a href="/eskul/">Eskul</a>
+      </div>
+      <div style="display:flex; gap:12px; align-items:center">
+        <span><i class="fas fa-leaf" style="color:#34A853"></i> Carbon neutral PWA</span>
+        <span>© 2026 Skenpat People</span>
+      </div>
     </div>
   </footer>
 
+  <div id="toast-container" style="position:fixed; left:50%; bottom:24px; transform:translateX(-50%); z-index:3000; display:flex; flex-direction:column; gap:10px; pointer-events:none"></div>
+
   <script>
-    // Prevent duplicate initialization
-    if (typeof window.skenpatInitialized === 'undefined') {
-      window.skenpatInitialized = true;
+    // Theme
+    const root = document.documentElement;
+    const body = document.body;
+    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    root.setAttribute('data-theme', savedTheme);
+    body.setAttribute('data-theme', savedTheme);
+    function setTheme(t){
+      root.setAttribute('data-theme', t); body.setAttribute('data-theme', t);
+      localStorage.setItem('theme', t);
+      const ic = document.querySelector('#theme-toggle-g i'); if(ic) ic.className = t==='dark'?'fas fa-sun':'fas fa-moon';
+      const metaLight = document.querySelector('meta[media="(prefers-color-scheme: light)"]');
+      const metaDark = document.querySelector('meta[media="(prefers-color-scheme: dark)"]');
+      if(t==='dark'){ metaLight?.setAttribute('content','#15130F'); } else { metaLight?.setAttribute('content','#FFFBF5'); }
+    }
+    setTheme(savedTheme);
+    document.getElementById('theme-toggle-g').addEventListener('click', ()=>{
+      const cur = root.getAttribute('data-theme'); setTheme(cur==='dark'?'light':'dark');
+      showToast('Tema '+(cur==='dark'?'light':'dark')+' aktif', 'info');
+    });
 
-      // Theme Management
-      function initTheme() {
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
+    // Year
+    document.getElementById('footer-year').textContent = 'Versi v3 • ' + new Date().getFullYear();
+
+    // Simple toast M3
+    window.showToast = (msg, type='info')=>{
+      const c = document.getElementById('toast-container');
+      const el = document.createElement('div');
+      el.className = 'm3-snackbar';
+      el.style.pointerEvents='auto';
+      el.innerHTML = '<span>'+msg+'</span><button onclick="this.parentElement.remove()">Tutup</button>';
+      c.appendChild(el);
+      setTimeout(()=>{ el.style.opacity='0'; el.style.transform='translateX(-50%) translateY(12px)'; setTimeout(()=>el.remove(),300); }, 3200);
+    };
+
+    // PWA install
+    let deferredPrompt = null;
+    const btnInstall = document.getElementById('btn-install-pwa');
+    window.addEventListener('beforeinstallprompt', (e)=>{
+      e.preventDefault(); deferredPrompt = e;
+      if(btnInstall) btnInstall.style.display='inline-flex';
+      showToast('Aplikasi bisa di-install!', 'info');
+    });
+    btnInstall?.addEventListener('click', async ()=>{
+      if(!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if(outcome==='accepted') showToast('Terima kasih! App ter-install.', 'success');
+      deferredPrompt=null; btnInstall.style.display='none';
+    });
+
+    // Install card dismiss
+    const card = document.getElementById('g-install-card');
+    const dismissed = sessionStorage.getItem('landingInstallDismiss');
+    if(dismissed) card.style.display='none';
+    document.getElementById('dismiss-card').addEventListener('click', ()=>{
+      card.style.display='none'; sessionStorage.setItem('landingInstallDismiss','1'); showToast('Oke, tetap di web 😊', 'info');
+    });
+
+    // Search Logic (similar to app but Google style)
+    let searchData = [];
+    async function loadSearch(){
+      try{
+        const [sRes, aRes] = await Promise.all([fetch('./aset/api/search.json'), fetch('./aset/api/articles.json')]);
+        const s = await sRes.json(); const a = await aRes.json();
+        const mapped = a.map(x=>({title:x.title, desc:x.summary, icon:'fa-book-open', link:'./artikel.html?id='+x.id, cat:'Artikel', kw:[x.category?.toLowerCase()||'artikel']}));
+        searchData = [...s, ...mapped];
+      }catch(e){ console.error(e); }
+    }
+    loadSearch();
+    function getRecents(){ try{return JSON.parse(localStorage.getItem('recentSearches')||'[]')}catch{return []} }
+    function saveRecent(t){ if(!t||t.length<2) return; let r=getRecents(); if(r.includes(t)) r=r.filter(x=>x!==t); r.unshift(t); if(r.length>6) r=r.slice(0,6); localStorage.setItem('recentSearches', JSON.stringify(r)); renderRecents(); }
+    function renderRecents(){
+      const list = document.getElementById('recent-list'); if(!list) return;
+      const rec = getRecents();
+      list.innerHTML = rec.map(q=>'<span class="g-trend-tag" data-q="'+q.replace(/"/g,'&quot;')+'"><i class="fas fa-clock"></i> '+q+'</span>').join('') || '<span style="font-size:0.85rem;color:var(--text-muted)">Belum ada</span>';
+      list.querySelectorAll('.g-trend-tag').forEach(el=>el.addEventListener('click',()=>{ const q=el.dataset.q; input.value=q; doSearch(q); }));
+    }
+    renderRecents();
+    const input = document.getElementById('g-search-input');
+    const preview = document.getElementById('g-search-preview');
+    const instantList = document.getElementById('instant-list');
+    const clearBtn = document.getElementById('search-clear');
+    let selIndex = -1;
+    function highlight(txt,q){ try{return txt.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'), '<mark style="background:var(--primary-container); color:var(--on-primary-container); padding:0 2px; border-radius:4px">$1</mark>');}catch{return txt} }
+    function doSearch(q){
+      const query = (q||'').trim();
+      clearBtn.style.display = query? 'grid':'none';
+      if(!query){ preview.classList.remove('active'); selIndex=-1; return; }
+      const lower = query.toLowerCase();
+      const results = searchData.filter(it=> (it.title&&it.title.toLowerCase().includes(lower)) || (it.desc&&it.desc.toLowerCase().includes(lower)) || (it.kw&&it.kw.some(k=>k.includes(lower))) ).slice(0,5);
+      if(results.length){
+        instantList.innerHTML = results.map((r,i)=>'<div class="g-instant-item '+(i===selIndex?'selected':'')+'" data-link="'+r.link+'" data-idx="'+i+'"><div class="g-icon-box"><i class="fas '+r.icon+'"></i></div><div class="g-instant-info"><h6>'+highlight(r.title, query)+'</h6><p>'+highlight(r.desc, query)+' • '+r.cat+'</p></div><i class="fas fa-arrow-up-right-from-square" style="color:var(--text-muted)"></i></div>').join('');
+      } else {
+        instantList.innerHTML = '<div style="padding:16px; text-align:center; color:var(--text-muted); font-size:0.9rem">Tidak ada hasil untuk “'+query+'”. Coba buka aplikasi untuk pencarian lanjut.</div>';
       }
-
-      function updateThemeIcon(theme) {
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-          const icon = themeToggle.querySelector('i');
-          if (icon) {
-            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-          }
-        }
+      preview.classList.add('active');
+      // bind clicks
+      instantList.querySelectorAll('.g-instant-item').forEach(el=>el.addEventListener('click',()=>handleResult(el.dataset.link, query)));
+    }
+    function handleResult(link, query){
+      if(query) saveRecent(query);
+      // if link is relative to root/app, redirect to app with query
+      if(link && link.startsWith('?') || link.startsWith('#') || link.includes('artikel.html') || link.startsWith('/')){ window.location.href = link; }
+      else if(link){ window.location.href = link; }
+      else {
+        // fallback: go to app with ?q=
+        window.location.href = './app/?q='+encodeURIComponent(query);
       }
+    }
+    input.addEventListener('input', e=>{ selIndex=-1; doSearch(e.target.value); });
+    input.addEventListener('focus', ()=>{ if(input.value) doSearch(input.value); else { preview.classList.add('active'); } });
+    input.addEventListener('keydown', e=>{
+      const items = instantList.querySelectorAll('.g-instant-item');
+      if(e.key==='ArrowDown'){ e.preventDefault(); selIndex = (selIndex+1)%items.length; updateSel(items); }
+      else if(e.key==='ArrowUp'){ e.preventDefault(); selIndex = (selIndex-1+items.length)%items.length; updateSel(items); }
+      else if(e.key==='Enter'){ e.preventDefault(); if(selIndex>-1 && items[selIndex]) handleResult(items[selIndex].dataset.link, input.value); else handleResult(null, input.value); }
+      else if(e.key==='Escape'){ preview.classList.remove('active'); input.blur(); }
+    });
+    function updateSel(items){ items.forEach((it,i)=>{ it.classList.toggle('selected', i===selIndex); if(i===selIndex) it.scrollIntoView({block:'nearest'}); }); }
+    clearBtn.addEventListener('click', ()=>{ input.value=''; doSearch(''); input.focus(); });
+    document.addEventListener('click', e=>{ if(!e.target.closest('.g-search-wrap')) preview.classList.remove('active'); });
+    document.querySelectorAll('.g-trend-tag[data-q]').forEach(el=>{ el.addEventListener('click',()=>{ input.value=el.dataset.q; doSearch(el.dataset.q); }); });
+    document.getElementById('btn-search').addEventListener('click', ()=>handleResult(null, input.value));
+    // voice
+    const voiceBtn = document.getElementById('voice-search-btn-landing');
+    if('webkitSpeechRecognition' in window || 'SpeechRecognition' in window){
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const rec = new SR(); rec.lang='id-ID';
+      rec.onstart = ()=> voiceBtn.classList.add('active');
+      rec.onend = ()=> voiceBtn.classList.remove('active');
+      rec.onresult = ev=>{ const t=ev.results[0][0].transcript; input.value=t; doSearch(t); };
+      voiceBtn.addEventListener('click', ()=> rec.start());
+    } else voiceBtn.style.display='none';
 
-      function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
-        showToast('Tema berhasil diganti!', 'success');
-      }
-
-      // Toast Notification System
-      window.showToast = function(message, type = 'info') {
-        const container = document.getElementById('toast-container');
-        if (!container) return;
-
-        const toast = document.createElement('div');
-        toast.className = `toast toast-${type}`;
-        
-        let iconClass = 'fa-info-circle';
-        if (type === 'success') iconClass = 'fa-check-circle';
-        if (type === 'error') iconClass = 'fa-exclamation-circle';
-
-        toast.innerHTML = `
-          <i class="fas ${iconClass} toast-icon"></i>
-          <div class="toast-content">
-            <p class="toast-message">${message}</p>
-          </div>
-          <button class="toast-close" aria-label="Tutup">&times;</button>
-        `;
-
-        container.appendChild(toast);
-
-        toast.querySelector('.toast-close').addEventListener('click', () => removeToast(toast));
-        
-        // Auto remove after 4 seconds
-        setTimeout(() => removeToast(toast), 4000);
-      };
-
-      function removeToast(toast) {
-        toast.classList.add('toast-exit');
-        setTimeout(() => toast.remove(), 300);
-      }
-
-      // Modal Utility
-      window.showModal = function(title, content) {
-        const existingModal = document.getElementById('custom-modal');
-        if (existingModal) existingModal.remove();
-
-        const modal = document.createElement('div');
-        modal.id = 'custom-modal';
-        modal.className = 'modal-overlay active';
-        modal.setAttribute('role', 'dialog');
-        modal.setAttribute('aria-modal', 'true');
-        modal.setAttribute('aria-labelledby', 'modal-title');
-        modal.innerHTML = `
-          <div class="modal-content-wrapper">
-            <div class="modal-header">
-              <h2 id="modal-title">${title}</h2>
-              <button class="modal-close-btn" aria-label="Tutup">&times;</button>
-            </div>
-            <div class="modal-body">
-              ${content}
-            </div>
-            <div class="modal-actions">
-              <button class="btn" style="background:var(--primary); color:white; width:100%; padding:10px; cursor:pointer;" onclick="document.getElementById('custom-modal').remove()">Tutup</button>
-            </div>
-          </div>
-        `;
-        document.body.appendChild(modal);
-
-        // Focus trap for accessibility
-        modal.querySelector('.modal-close-btn').addEventListener('click', () => modal.remove());
-        modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
-        
-        // Close on Escape key
-        const escHandler = (e) => {
-          if (e.key === 'Escape') {
-            modal.remove();
-            document.removeEventListener('keydown', escHandler);
-          }
-        };
-        document.addEventListener('keydown', escHandler);
-      };
-
-      window.showPrivacyPolicy = function() {
-        showModal("Kebijakan Privasi", `
-          <div style="line-height: 1.8;">
-            <p><strong>Kebijakan Privasi Skenpat People</strong></p>
-            <p>Kami sangat menghargai privasi Anda. Berikut adalah kebijakan kami:</p>
-            <ul style="margin: 15px 0; padding-left: 20px;">
-              <li>Kami tidak mengumpulkan data pribadi apa pun.</li>
-              <li>Kami tidak melacak aktivitas browsing Anda.</li>
-              <li>Kami hanya menggunakan cookie esensial untuk fungsionalitas situs.</li>
-              <li>Data yang Anda kirim melalui formulir feedback hanya digunakan untuk meningkatkan layanan.</li>
-            </ul>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">Terakhir diperbarui: Januari 2026</p>
-          </div>
-        `);
-      };
-
-      // Loader & PopUp Trigger
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          const loader = document.getElementById('loader');
-          if (loader) {
-            loader.classList.add('hidden');
-            setTimeout(() => loader.remove(), 500);
-          }
-        }, 400);
-
-        // Trigger Install Popup or Redirect after loader
-        setTimeout(() => {
-          // Check if popup was previously dismissed
-          const popupDismissed = sessionStorage.getItem('popupDismissed');
-          if (popupDismissed) return;
-
-          const isAndroid = /Android/i.test(navigator.userAgent);
-
-          // Only for Non-Android (Desktop & iOS)
-          if (!isAndroid) {
-            const redirectPopup = document.getElementById('redirect-popup');
-            const floatingSuggest = document.getElementById('floating-suggest');
-            const cancelBtn = document.getElementById('cancel-redirect-btn');
-
-            if (redirectPopup) {
-              redirectPopup.classList.add('active');
-
-              let timeLeft = 5;
-              const timerElement = document.getElementById('redirect-timer');
-
-              const redirectTimeout = setTimeout(() => {
-                window.location.href = './app';
-              }, 5500);
-
-              const interval = setInterval(() => {
-                timeLeft -= 1;
-                if (timerElement && timeLeft >= 0) {
-                  timerElement.innerText = `Mengalihkan dalam ${timeLeft} detik...`;
-                }
-                if (timeLeft <= 0) clearInterval(interval);
-              }, 1000);
-
-              if (cancelBtn) {
-                cancelBtn.addEventListener('click', () => {
-                  clearTimeout(redirectTimeout);
-                  clearInterval(interval);
-                  redirectPopup.classList.remove('active');
-                  sessionStorage.setItem('popupDismissed', 'true');
-                  if (floatingSuggest) floatingSuggest.classList.add('visible');
-                  showToast('Popup ditutup. Klik tombol di kanan bawah untuk membuka Web App.', 'info');
-                });
-              }
-            }
-            return;
-          }
-
-          // Only show install popup for Android
-          const popup = document.getElementById('install-popup');
-          if (popup) popup.classList.add('active');
-        }, 1500);
+    // FAQ accordion
+    document.querySelectorAll('.g-faq-item').forEach(item=>{
+      item.querySelector('.g-faq-q').addEventListener('click', ()=>{
+        const wasOpen=item.classList.contains('open');
+        document.querySelectorAll('.g-faq-item').forEach(i=>i.classList.remove('open'));
+        if(!wasOpen) item.classList.add('open');
       });
+    });
 
-      // Main initialization
-      document.addEventListener('DOMContentLoaded', () => {
-        initTheme();
+    // Modal privacy/terms
+    function showModal(title, html){
+      const old=document.getElementById('custom-modal'); if(old) old.remove();
+      const m=document.createElement('div'); m.id='custom-modal';
+      m.style.cssText='position:fixed;inset:0;z-index:4000;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:16px';
+      m.innerHTML='<div style="background:var(--surface); border:1px solid var(--md-outline-variant); border-radius:24px; max-width:560px; width:100%; box-shadow:var(--shadow-4); overflow:hidden"><div style="padding:18px 20px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--md-outline-variant)"><h3 style="font-family:var(--font-head)">'+title+'</h3><button id="close-m" style="width:36px;height:36px;border-radius:50%;border:1px solid var(--md-outline-variant);background:transparent;cursor:pointer"><i class="fas fa-times"></i></button></div><div style="padding:20px; line-height:1.7; color:var(--text-main)">'+html+'</div><div style="padding:12px 20px 20px"><button id="ok-m" style="width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:9999px;font-weight:700;cursor:pointer">Mengerti</button></div></div>';
+      document.body.appendChild(m);
+      const close=()=>m.remove();
+      m.addEventListener('click',e=>{ if(e.target===m) close(); });
+      m.querySelector('#close-m').addEventListener('click',close);
+      m.querySelector('#ok-m').addEventListener('click',close);
+    }
+    document.getElementById('priv-link').addEventListener('click', e=>{ e.preventDefault(); showModal('Privasi', '<p style=\"margin-bottom:10px\">Kami tidak mengumpulkan data pribadi. Cookie hanya untuk tema dan pencarian terbaru (localStorage). Feedback disimpan anonim.</p><p style=\"color:var(--text-muted);font-size:0.9rem\">Terakhir update: 2026</p>'); });
+    document.getElementById('terms-link').addEventListener('click', e=>{ e.preventDefault(); showModal('Syarat', '<p>Website buatan siswa SMKN 4 Banjarmasin untuk memudahkan akses informasi. Sumber resmi tetap <b>smkn4bjm.sch.id</b>. Konten artikel kurasi dari siswa.</p>'); });
 
-        // Popup handlers
-        const popup = document.getElementById('install-popup');
-        const closeBtn = document.getElementById('close-popup-btn');
-        const laterBtn = document.getElementById('later-btn');
-
-        const closePopup = () => {
-          if (popup) {
-            popup.classList.remove('active');
-            sessionStorage.setItem('popupDismissed', 'true');
-          }
-        };
-
-        if (closeBtn) closeBtn.addEventListener('click', closePopup);
-        if (laterBtn) laterBtn.addEventListener('click', closePopup);
-        if (popup) {
-          popup.addEventListener('click', (e) => {
-            if (e.target === popup) closePopup();
-          });
-        }
-
-        // Navigation Logic
-        const switchTab = (tabName) => {
-          const tabs = document.querySelectorAll('.tab-content');
-          const navLinks = document.querySelectorAll('.navbar-menu a');
-
-          let found = false;
-          tabs.forEach(tab => {
-            if (tab.id === `tab-${tabName}`) {
-              tab.classList.add('active');
-              found = true;
-            } else {
-              tab.classList.remove('active');
-            }
-          });
-
-          if (!found) {
-            const defaultTab = document.getElementById('tab-beranda');
-            if (defaultTab) defaultTab.classList.add('active');
-            tabName = 'beranda';
-          }
-
-          navLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && href.includes(`tab=${tabName}`)) {
-              link.classList.add('active');
-            } else if (link) {
-              link.classList.remove('active');
-            }
-          });
-
-          window.scrollTo({ top: 0, behavior: 'instant' });
-        };
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const initialTab = urlParams.get('tab') || 'beranda';
-        switchTab(initialTab);
-
-        document.querySelectorAll('.navbar-menu a').forEach(link => {
-          link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
-            if (href && href.includes('tab=')) {
-              e.preventDefault();
-              const urlParams = new URLSearchParams(href.split('?')[1]);
-              const tabName = urlParams.get('tab');
-              switchTab(tabName);
-              const newUrl = window.location.pathname + '?tab=' + tabName;
-              window.history.pushState({ tab: tabName }, '', newUrl);
-            }
-          });
-        });
-
-        window.addEventListener('popstate', (e) => {
-          const tab = (e.state && e.state.tab) || 'beranda';
-          switchTab(tab);
-        });
-
-        // UI Elements
-        const navbarToggle = document.getElementById('navbar-toggle');
-        const navbarMenu = document.getElementById('navbar-menu');
-        const menuOverlay = document.getElementById('menu-overlay');
-        const backBtn = document.getElementById('backToTop');
-        const fab = document.getElementById('fab');
-        const themeToggle = document.getElementById('theme-toggle');
-
-        if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
-
-        // Mobile menu toggle with overlay
-        if (navbarToggle && navbarMenu) {
-          navbarToggle.addEventListener('click', () => {
-            navbarMenu.classList.toggle('active');
-            if (menuOverlay) menuOverlay.classList.toggle('active');
-            const isOpen = navbarMenu.classList.contains('active');
-            navbarToggle.setAttribute('aria-expanded', String(isOpen));
-            const icon = navbarToggle.querySelector('i');
-            if (icon) icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
-          });
-
-          // Close menu when clicking overlay
-          if (menuOverlay) {
-            menuOverlay.addEventListener('click', () => {
-              navbarMenu.classList.remove('active');
-              menuOverlay.classList.remove('active');
-              navbarToggle.setAttribute('aria-expanded', 'false');
-              const icon = navbarToggle.querySelector('i');
-              if (icon) {
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
-              }
-            });
-          }
-        }
-
-        // Scroll effects
-        window.addEventListener('scroll', () => {
-          const nav = document.querySelector('.navbar');
-          if (nav) {
-            if (window.scrollY > 50) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
-          }
-
-          if (backBtn) {
-            if (window.scrollY > 300) {
-              backBtn.classList.add('visible');
-            } else {
-              backBtn.classList.remove('visible');
-            }
-          }
-        });
-
-        if (backBtn) {
-          backBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          });
-        }
-
-        if (fab) {
-          fab.addEventListener('click', () => {
-            const funFacts = [
-              "👨‍💻 Website ini dibuat oleh seorang siswa RPL.",
-              "🌐 Pemilik subdomain ini adalah murid dari sekolah.",
-              "✨ Tanpa framework, murni HTML, CSS, dan JS.",
-              "🎨 Desain UI dibuat untuk kenyamanan scrolling di mobile.",
-              "🔧 Dikembangkan dengan ❤️ oleh Thio Saputra"
-            ];
-            const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
-            showModal("Fun Fact", `<p style="text-align: center; padding: 20px;">${randomFact}</p>`);
-          });
-        }
-      });
-
-      // Service Worker Registration
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./aset/js/sw.js')
-            .then(registration => {
-              console.log('ServiceWorker registered:', registration.scope);
-            })
-            .catch(error => {
-              console.log('ServiceWorker registration failed:', error);
-            });
-        });
-      }
-
-      // Global error handler
-      window.addEventListener('error', (e) => {
-        console.error('Error:', e.message);
-      });
+    // Service worker
+    if('serviceWorker' in navigator){
+      window.addEventListener('load',()=>{ navigator.serviceWorker.register('./aset/js/sw.js').catch(()=>{}); });
     }
   </script>
 </body>
-
 </html>

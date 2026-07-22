@@ -1,15 +1,20 @@
 {
-  "name": "Skenpat People SMKN 4 Banjarmasin",
+  "name": "Skenpat People SMKN 4 Banjarmasin - Material You App",
   "short_name": "Skenpat",
-  "description": "Portal digital terpadu untuk warga SMKN 4 Banjarmasin - Akses jadwal, informasi, dan layanan sekolah",
-  "start_url": "/",
+  "description": "Portal digital terpadu SMKN 4 Banjarmasin dengan Material You 3 native experience. Cari jadwal, eskul, mars, forum dan berita - bisa offline & install.",
+  "start_url": "/app/?utm_source=pwa",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
   "background_color": "#FFFBF5",
-  "theme_color": "#FF9F43",
+  "theme_color": "#FF6A00",
   "lang": "id-ID",
-  "categories": ["education", "utilities"],
+  "dir": "ltr",
+  "categories": ["education", "utilities", "productivity"],
+  "launch_handler": { "client_mode": ["focus-existing", "auto"] },
+  "handle_links": "preferred",
+  "edge_side_panel": { "preferred_width": 400 },
   "icons": [
     {
       "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png",
@@ -64,18 +69,48 @@
     {
       "name": "Jadwal Mapel",
       "short_name": "Jadwal",
-      "description": "Akses jadwal mata pelajaran",
-      "url": "/mapel",
+      "description": "Akses jadwal mata pelajaran harian",
+      "url": "/app/?tab=beranda&utm_source=shortcut#jadwal",
+      "icons": [{ "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Eskul",
+      "short_name": "Eskul",
+      "description": "Daftar & jadwal ekstrakurikuler",
+      "url": "/eskul/?utm_source=shortcut",
+      "icons": [{ "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Mars Sekolah",
+      "short_name": "Mars",
+      "description": "Putar mars SMKN 4 Banjarmasin",
+      "url": "/app/?tab=musik&utm_source=shortcut",
+      "icons": [{ "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Alat Bantu",
+      "short_name": "Alat",
+      "description": "Kumpulan tools digital siswa",
+      "url": "/app/?tab=alat&utm_source=shortcut",
       "icons": [{ "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png", "sizes": "96x96" }]
     },
     {
       "name": "Feedback",
       "short_name": "Feedback",
       "description": "Kirim kritik dan saran",
-      "url": "/feedback",
+      "url": "/feedback/?utm_source=shortcut",
       "icons": [{ "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png", "sizes": "96x96" }]
     }
   ],
-  "screenshots": [],
-  "prefer_related_applications": false
+  "screenshots": [
+    {
+      "src": "https://res.cloudinary.com/dahcxjdbl/image/upload/v1769351802/7372cb57-7f68-43c1-86d4-5e1243161fa0.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Skenpat Home"
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": []
 }
